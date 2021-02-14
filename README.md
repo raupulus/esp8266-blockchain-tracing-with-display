@@ -10,7 +10,7 @@ Work In Progress
 
 ## Hardware
 
-- Display 2004A (16x4)
+- Display 2004A (20x4)
 - Converter i2c
 - Bi-Directional Logic Level Converter (Display at 5v, i2c at 3'3v)
 - Esp8266 NodeMcu V3
@@ -55,7 +55,7 @@ You can use external API for example API Binance or other public API.
 
 The connections are very simple but they can vary in different esp8266 models so you should check the diagram for yours.
 
-In my case, connect i2c on pins **d1** and **d2**.
+In my case, connect i2c on pins **D1** and **D2**.
 
 It is not a complex circuit.
 
