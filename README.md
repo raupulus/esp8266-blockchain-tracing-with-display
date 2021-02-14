@@ -2,6 +2,10 @@
 
 Shows Real Time Price of Cryptocurrencies on several Screens
 
+## Video Tutorial
+
+Work In Progress
+
 ## Hardware
 
 - Display 2004A (16x4)
@@ -70,3 +74,7 @@ We power the screen and the Bi-Directional Logic Level Converter with 5v. in the
 We connect sda and scl from esp8266 to the Bi-Directional Logic Level Converter. 
 
 We also power this part of the Bi-Directional Logic Level Converter with 3.3v (it can be connected to esp8266 directly).
+
+## 3D print box
+
+Work In Progress
