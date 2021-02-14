@@ -2,6 +2,8 @@
 
 Shows Real Time Price of Cryptocurrencies on several Screens
 
+![Project Image](./image1.jpg "Project Image 1")
+
 ## Video Tutorial
 
 Work In Progress
