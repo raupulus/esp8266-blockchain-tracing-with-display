@@ -20,3 +20,27 @@ Before start, need add to IDE:
 - arduino-libraries/ArduinoHttpClient@^0.4.0
 - marcoschwartz/LiquidCrystal_I2C@^1.1.4
 - bblanchon/ArduinoJson@^6.17.2
+
+## Prepare project
+
+Copy file **src/api.cpp.example** to **src/api.cpp**.
+
+```bash
+cd esp8266-blockchain-tracing-with-display
+cp src/api.cpp.example src/api.cpp
+```
+
+And set your values:
+
+```c++
+#define AP_NAME "AccesPointName"
+#define AP_PASSWORD "Wireless_password"
+#define API_DOMAIN "https://myweb.com"
+#define API_PORT "443"
+#define API_PATH "api/v1"
+#define API_TOKEN_BEARER ""
+```
+
+No need bearer token, but need internet AP configuration and API for request data.
+
+You can use external API for example API Binance or other public API.
