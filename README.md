@@ -77,6 +77,10 @@ We connect sda and scl from esp8266 to the Bi-Directional Logic Level Converter.
 
 We also power this part of the Bi-Directional Logic Level Converter with 3.3v (it can be connected to esp8266 directly).
 
+![Project Image](./image2.jpg "Project Image 2")
+![Project Image](./image3.jpg "Project Image 3")
+![Project Image](./image4.jpg "Project Image 4")
+
 ## 3D print box
 
 Work In Progress
