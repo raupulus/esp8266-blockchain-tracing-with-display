@@ -1,4 +1,4 @@
-# esp8266-blockchain-tracing-with-display
+# Esp8266 Blockchain Tracing With Display
 
 Shows Real Time Price of Cryptocurrencies on several Screens
 
