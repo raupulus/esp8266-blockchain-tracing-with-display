@@ -11,8 +11,7 @@
 
 // Parámetros para el modo hibernación
 #define uS_TO_S_FACTOR 1000000  /* Conversion factor for micro seconds to seconds */
-//#define TIME_TO_SLEEP  108000    /* Time ESP32 will go to sleep (in seconds) */
-#define TIME_TO_SLEEP  300        /* Time ESP32 will go to sleep (in seconds) */
+#define TIME_TO_SLEEP  300        /* Time ESP will go to sleep (in seconds) */
 
 int bootCount = 0;
 
@@ -55,6 +54,9 @@ bool wifiIsConnected() {
   return WiFi.status() == WL_CONNECTED;
 }
 
+/**
+ * Muestra información por conexión serial.
+ */ 
 void serialLog() {
   bool wifiStatus = wifiIsConnected();
   
@@ -65,6 +67,9 @@ void serialLog() {
   }
 }
 
+/**
+ * Función auxiliar para parsear cadenas en formato urlencode.
+ */ 
 unsigned char h2int(char c)
 {
     if (c >= '0' && c <='9'){
@@ -79,6 +84,9 @@ unsigned char h2int(char c)
     return(0);
 }
 
+/**
+ * Codifica cadenas de texto en formato url.
+ */ 
 String urlencode(String str)
 {
     String encodedString="";
@@ -113,6 +121,9 @@ String urlencode(String str)
     return encodedString;
 }
 
+/**
+ * Decodifica cadenas de texto de url a texto normal.
+ */ 
 String urldecode(String str)
 {
     String encodedString="";
@@ -141,6 +152,9 @@ String urldecode(String str)
    return encodedString;
 }
 
+/**
+ * Devuelve la media de una moneda recibiendo el símbolo.
+ */
 float getAverageFromApi(String symbol) {
   auto payload = "";
   DynamicJsonDocument doc(2048);
@@ -152,10 +166,11 @@ float getAverageFromApi(String symbol) {
     Serial.println("Obteniendo datos de la API");
     HTTPClient http;
 
+    // Establecer aquí certificado en lugar de aceptar cualquier petición.
     //uint8_t cert[20] = {184,120,14,91,203,255,205,98,26,130,214,144,95,34,236,197,210,208,31,245};
     //client.setFingerprint(cert);
-    client.setInsecure();
     //client.connect(API_DOMAIN, (String) 443);
+    client.setInsecure();
 
     String endpoint = "avgPrice?symbol=" + (String)symbol;
     String url = (String)API_DOMAIN + ":" +(String)API_PORT + "/" + (String)API_PATH + "/" + endpoint;
@@ -250,6 +265,9 @@ void scani2c() {
   }
 }
 
+/**
+ * Función para probar pantalla (DEBUG)
+ */ 
 void testScreen() {
   lcd.setCursor(0,0);
   lcd.println("INITIALIZED SCREEN");
@@ -265,7 +283,6 @@ void setup() {
   // Delay para prevenir posible cuelgue al despertar de hibernación.
   delay(500);
 
-
   // Initialize the lcd 
   lcd.init();
   lcd.rightToLeft();
@@ -274,7 +291,6 @@ void setup() {
   lcd.backlight();
   
   lcd.clear();
-
 
   Serial.begin(115200);
   Serial.println("ESP8266 STARTED");
@@ -285,6 +301,13 @@ void setup() {
   wifiConnect();
 }
 
+/**
+ * Reescribe una línea en la pantalla.
+ * 
+ * int line Número de línea (0-3)
+ * float price Valor
+ * String name Nombre de la conversión
+ */ 
 void showDisplay(int line, float price, String name) {
   
   lcd.setCursor(0, line);
@@ -331,12 +354,8 @@ void loop() {
   showDisplay(3, doge, "DOGE/EUR");
   Serial.print("DOGE:");
   Serial.println(doge);
-  delay(3000);
 
-
-  delay(120000);
-
-
+  delay(180000);
 
   Serial.println("Termina el loop");
   Serial.println("---------------------------------------");
@@ -347,6 +366,7 @@ void loop() {
   Serial.print("Contador de veces despierto: ");
   Serial.println(bootCount);
   delay(500);
+
   //esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
   //esp_deep_sleep_start();
 }
