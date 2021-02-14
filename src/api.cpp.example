@@ -1,0 +1,10 @@
+// Datos del Wireless
+#define AP_NAME "AccesPointName"
+#define AP_PASSWORD "Wireless_password"
+
+// Datos de la API
+#define API_DOMAIN "https://myweb.com"
+#define API_PORT "443"
+#define API_PATH "api/v1"
+#define API_TOKEN_BEARER ""
+
